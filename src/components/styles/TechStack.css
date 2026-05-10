@@ -1,0 +1,294 @@
+/* ── Tech Stack Section ── */
+.techstack {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px 0;
+}
+
+.techstack h2 {
+  font-size: 80px;
+  text-align: center;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.techstack h2 span {
+  color: var(--accentColor);
+}
+
+.spot-subtitle {
+  text-align: center;
+  font-size: 15px;
+  color: rgba(234, 229, 236, 0.4);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 60px;
+}
+
+/* ── Spotlight Grid ── */
+.spot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  width: 90%;
+  max-width: 750px;
+  position: relative;
+  --spotlight-x: -999px;
+  --spotlight-y: -999px;
+}
+
+/* Global overlay spotlight — visible on the whole grid */
+.spot-overlay {
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+  background: radial-gradient(
+    350px circle at var(--spotlight-x) var(--spotlight-y),
+    rgba(94, 234, 212, 0.06),
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ── Individual Card ── */
+.spot-card {
+  position: relative;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 40px 24px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  /* Scroll entrance */
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.spot-card.spot-visible {
+  animation: spotEnter 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes spotEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.spot-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ── Card Border Glow (follows cursor) ── */
+.spot-card-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 1px;
+  background: radial-gradient(
+    250px circle at var(--card-x) var(--card-y),
+    var(--accent),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.spot-grid:hover .spot-card-border {
+  opacity: 1;
+}
+
+/* ── Inner Card Spotlight ── */
+.spot-card-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: radial-gradient(
+    200px circle at var(--card-x) var(--card-y),
+    color-mix(in srgb, var(--accent) 10%, transparent),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.spot-grid:hover .spot-card-glow {
+  opacity: 1;
+}
+
+/* ── Card Content ── */
+.spot-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.spot-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.spot-card:hover .spot-icon-wrap {
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  box-shadow: 0 0 25px color-mix(in srgb, var(--accent) 15%, transparent);
+  transform: scale(1.06);
+}
+
+.spot-icon {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: filter 0.3s ease;
+}
+
+.spot-card:hover .spot-icon {
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--accent) 40%, transparent));
+}
+
+.spot-name {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(234, 229, 236, 0.6);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.spot-card:hover .spot-name {
+  color: var(--accent);
+}
+
+/* ── Responsive ── */
+@media screen and (max-width: 900px) {
+  .techstack h2 {
+    font-size: 40px;
+  }
+
+  .spot-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    max-width: 500px;
+  }
+
+  .spot-card {
+    padding: 28px 16px;
+  }
+
+  .spot-icon-wrap {
+    width: 56px;
+    height: 56px;
+  }
+
+  .spot-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .spot-name {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .techstack {
+    padding: 30px 0;
+    margin-top: 15px;
+    min-height: auto;
+  }
+
+  .techstack h2 {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+
+  .spot-subtitle {
+    font-size: 10px;
+    margin-bottom: 24px;
+    letter-spacing: 2px;
+  }
+
+  .spot-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    width: 95%;
+    max-width: 300px;
+  }
+
+  .spot-card {
+    padding: 20px 10px;
+    border-radius: 10px;
+  }
+
+  .spot-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+
+  .spot-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .spot-name {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .techstack h2 {
+    font-size: 24px;
+  }
+
+  .spot-grid {
+    max-width: 280px;
+  }
+
+  .spot-card {
+    padding: 16px 8px;
+  }
+
+  .spot-icon-wrap {
+    width: 40px;
+    height: 40px;
+  }
+
+  .spot-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .spot-name {
+    font-size: 9px;
+  }
+}

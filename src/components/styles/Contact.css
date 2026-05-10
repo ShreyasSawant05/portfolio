@@ -1,0 +1,199 @@
+.contact-section {
+  margin: auto;
+  padding-bottom: 100px;
+  margin-top: 100px;
+  position: relative;
+  z-index: 2;
+  background-color: var(--backgroundColor);
+}
+
+.contact-section h3 {
+  font-size: 60px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.contact-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-flex h4 {
+  font-weight: 500;
+  margin: 0;
+  opacity: 0.6;
+}
+
+.contact-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+.contact-info-icon {
+  font-size: 20px;
+  color: var(--accentColor);
+}
+
+.contact-box h4:not(:first-child) {
+  margin-top: 30px; /* Reduced space between Get In Touch items and Education */
+}
+
+.contact-flex p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+a.contact-social {
+  font-size: 25px;
+  border-bottom: 1px solid #ccc;
+  margin-top: 12px;
+}
+
+.contact-box h2 {
+  font-weight: 400;
+  font-size: 23px;
+  margin: 0;
+}
+
+.contact-box h2>span {
+  color: var(--accentColor);
+}
+
+.contact-box h5 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 20px;
+  display: flex;
+  gap: 10px;
+  opacity: 0.5;
+}
+
+@media only screen and (max-width: 1600px) {
+  .contact-section h3 {
+    font-size: 50px;
+  }
+
+  .contact-box h2 {
+    font-size: 20px;
+  }
+
+  a.contact-social {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .contact-section h3 {
+    font-size: 40px;
+  }
+
+  .contact-box h2 {
+    font-size: 18px;
+  }
+
+  a.contact-social {
+    font-size: 20px;
+  }
+
+  .contact-flex p {
+    margin-top: 0px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .contact-flex {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .contact-flex p {
+    margin-bottom: 0px;
+  }
+
+  .contact-flex h4 {
+    margin-top: 20px;
+  }
+
+  .contact-section {
+    margin-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .contact-container {
+    width: calc(100% - 25px);
+  }
+}
+
+/* ── Small phone refinements ── */
+@media only screen and (max-width: 480px) {
+  .contact-section h3 {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+
+  .contact-flex {
+    gap: 24px;
+  }
+
+  .contact-flex p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .contact-flex h4 {
+    font-size: 13px;
+    margin-top: 16px;
+  }
+
+  a.contact-social {
+    font-size: 16px;
+    padding-bottom: 6px;
+  }
+
+  .contact-box h2 {
+    font-size: 15px;
+  }
+
+  .contact-box h5 {
+    font-size: 14px;
+  }
+
+  .contact-info-item {
+    font-size: 13px;
+  }
+
+  .contact-container {
+    width: calc(100% - 16px);
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .contact-section h3 {
+    font-size: 24px;
+  }
+
+  .contact-flex p {
+    font-size: 12px;
+  }
+
+  a.contact-social {
+    font-size: 14px;
+  }
+
+  .contact-box h2 {
+    font-size: 14px;
+  }
+
+  .contact-box h5 {
+    font-size: 13px;
+  }
+}
